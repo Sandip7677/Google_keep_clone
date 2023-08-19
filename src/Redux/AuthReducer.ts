@@ -1,14 +1,12 @@
 // authReducer.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Session} from '@supabase/supabase-js';
 
-interface User {
-  username: string;
-  // Other user properties
+
+export interface AuthState {
+  user: Session | null;
 }
 
-interface AuthState {
-  user: User | null;
-}
 
 const initialState: AuthState = {
   user: null,
@@ -18,7 +16,7 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    login: (state, action: PayloadAction<User>) => {
+    login: (state, action: PayloadAction<Session>) => {
       state.user = action.payload;
     },
     logout: (state) => {
