@@ -1,21 +1,16 @@
-import { useSelector } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { AuthState } from "./Redux/AuthReducer";
 import RouterPage from "./Pages/RouterPage";
 import { supabase } from "./Auth/loginApi";
 import { useEffect, useState } from "react";
-import { Session, User } from "@supabase/supabase-js";
+import { Session, User, UserResponse } from "@supabase/supabase-js";
 import { Button } from "./components/ui/button";
-import { useDispatch } from 'react-redux';
-import { login } from "./Redux/AuthReducer";
+
 
 
 
 function App(){
-  const [user,setUser]=useState<User|null>();
-  // const dispatch = useDispatch();
-  // const user = useSelector((state: AuthState ) => state.user);
-  // console.log(user,"user");
+  const [user,setUser]=useState<User|null|UserResponse>();
+
   const handleSignIn = async () => {
  
      await supabase.auth.signInWithOAuth({
@@ -26,18 +21,13 @@ function App(){
 
   useEffect(() => {
     const getuser=async () => {
-      const session=await supabase.auth.getUser();
-      setUser(session.data.user)
+      const user=await supabase.auth.getUser()
+      setUser(user);
     }
-    getuser()
+     getuser();
     
   }, [])
   
-
-
-
-  
-
   return user?(
     <BrowserRouter >
       <RouterPage />

@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
-import { useDispatch } from 'react-redux';
-import { login,logout } from '../Redux/AuthReducer';
+// import { useDispatch } from 'react-redux';
+// import { login,logout } from '../Redux/AuthReducer';
 
 
 const supabaseUrl = "https://yrngafkieectwejdfjoa.supabase.co";
