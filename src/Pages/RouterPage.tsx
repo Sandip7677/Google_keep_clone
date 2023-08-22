@@ -1,5 +1,9 @@
 import { Navigate, useRoutes } from "react-router-dom";
 import RootLayout from "./RootLayout";
+import Notes from "./Notes";
+import Reminder from "./reminder";
+import Archive from "./Archive";
+import Trash from "./Trash";
 
 const RouterPage = () => {
     return useRoutes([
@@ -9,27 +13,27 @@ const RouterPage = () => {
           children: [
             {
               path: "",
-              element: <Navigate to="Notes" />,
+              element: <Notes/>,
             },
             {
               path: "/Notes",
-              element:<Navigate to="Notes" />,
+              element:<Notes/>,
             },
             {
-              path: "/reminders",
-              element: <Navigate to="reminders" />,
+              path: "/reminder",
+              element: <Reminder/>,
             },
             {
               path: "/archive",
-              element:<Navigate to="archive" />,
+              element:<Archive/>,
             },
             {
               path: "/trash",
-              element: <Navigate to="trash" />,
+              element: <Trash/>,
             },
             {
               path: "*",
-              element: <Navigate to="Notes" />,
+              element: <Notes/>,
             },
           ],
         },
