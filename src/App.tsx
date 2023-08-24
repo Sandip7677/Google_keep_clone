@@ -1,35 +1,37 @@
 import { BrowserRouter } from "react-router-dom";
 import RouterPage from "./Pages/RouterPage";
-import { supabase } from "./Auth/loginApi";
 import { useEffect, useState } from "react";
 import { User, UserResponse } from "@supabase/supabase-js";
 import LoginPage from "./Pages/LoginPage";
+import { getUser } from "./Auth/loginApi";
 
 
 
 
-function App(){
-  const [user,setUser]=useState<User|null|UserResponse>();
-
+function App() {
+  const [user, setUser] = useState<User | null>();
   useEffect(() => {
-    const getuser=async () => {
-      const user=await supabase.auth.getUser()
-      //  console.log(user.data.user,"user")
-      setUser(user.data.user);
+    const getuser = async () => {
+      const userData = await getUser();
+      setUser(userData.data.user);
     }
-     getuser();
-    }, [])
-    
-    return (user!= null)?(
-      <BrowserRouter >
+    getuser();
+    // if (user != null && user != undefined) {
+    //   console.log(user.user_metadata.avatar_url, "user");
+    // }
+  }, [])
+
+
+  return (user != null) ? (
+    <BrowserRouter >
       <RouterPage />
     </BrowserRouter>
   ) : (
     <>
-   <LoginPage/>
-   </>
+      <LoginPage />
+    </>
   );
-  
+
 }
 
 export default App
