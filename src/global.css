@@ -74,3 +74,18 @@
     @apply bg-background text-foreground;
   }
 }
+
+.main_container {
+  width: 100%;
+ 
+}
+
+@media (min-width: 1400px) {
+  .main_container {
+    max-width: 1400px;
+  }
+}
+
+li{
+  list-style-type: none;
+}
