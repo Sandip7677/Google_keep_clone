@@ -89,3 +89,10 @@
 li{
   list-style-type: none;
 }
+
+.min-width-card{
+  min-width: 300px;
+}
+.min-height-card{
+  min-height: 100px;
+}
