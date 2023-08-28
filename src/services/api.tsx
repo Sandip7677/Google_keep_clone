@@ -13,6 +13,7 @@ export type nData = {
   is_deleted?: boolean,
 }
 
+
 //fetch user
 
 export const getUser = async () => {
@@ -39,7 +40,7 @@ export const fetchNotes = async () => {
   const userId = await getUser();
   const { data } = await supabase
     .from('notes')
-    .select("note")
+    .select("*")
     .eq('user_id', userId?.id)
     .eq("is_archived", "false")
     .eq("is_deleted", "false")
@@ -53,7 +54,7 @@ export const fetchNotesReminder = async () => {
   const userId = await getUser();
   const { data } = await supabase
     .from('notes')
-    .select("note,reminder_time")
+    .select("*")
     .eq('user_id', userId?.id)
     .eq("is_reminder", "true")
 
@@ -66,7 +67,7 @@ export const fetchNotesArchieved = async () => {
   const userId = await getUser();
   const { data } = await supabase
     .from('notes')
-    .select("note")
+    .select("*")
     .eq('user_id', userId?.id)
     .eq("is_archived", "true")
 
@@ -77,7 +78,7 @@ export const fetchNotesdeleted = async () => {
   const userId = await getUser();
   const { data } = await supabase
     .from('notes')
-    .select("note")
+    .select("*")
     .eq('user_id', userId?.id)
     .eq("is_deleted", "true")
 
@@ -85,16 +86,16 @@ export const fetchNotesdeleted = async () => {
 };
 
 //updated notes
-export const updateItem = async (item: nData, id: string) => {
+export const updateItem = async ({ item, id }: any) => {
   const userId = await getUser();
 
   const { error } = await supabase
     .from('notes')
-    .update({ item })
-    .eq("userId", userId?.id)
+    .update(item)
+    .eq("user_id", userId?.id)
     .eq("id", id); //matching id of row to update
 
-  if (error) throw error;
+  if (error) console.log(error);
 
 
 };

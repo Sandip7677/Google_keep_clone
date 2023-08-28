@@ -5,7 +5,7 @@ import { useQuery } from 'react-query';
 import { fetchNotesReminder } from '../services/api';
 
 const Reminder = () => {
-  const notesData = useQuery("notes", fetchNotesReminder);
+  const notesData = useQuery("remindernotes", fetchNotesReminder);
   return (
     <>
       <div className="flex flex-col items-center pt-8">
