@@ -106,12 +106,13 @@ export const deleteItem = async (id: string) => {
 
   const userId = await getUser();
 
-  await supabase
-    .from("todo")
+  const { error } = await supabase
+    .from("notes")
     .delete() //delete the row
     .eq("id", id) //the id of row to delete
-    .eq("userId", userId?.id) //check if the item being deleted belongs to the user
+    .eq("user_id", userId?.id) //check if the item being deleted belongs to the user
 
+  if (error) console.log(error);
 
 
 };

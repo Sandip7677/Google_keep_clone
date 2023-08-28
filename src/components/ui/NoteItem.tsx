@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Card, CardContent, CardFooter } from './card'
-import { Archive, ArchiveRestore, Trash, Trash2 } from 'lucide-react';
+import { Archive, ArchiveRestore, Trash2 } from 'lucide-react';
 import { Button } from './button';
-import { updateItem } from '../../services/api';
+import { deleteItem, updateItem } from '../../services/api';
 import { useMutation } from 'react-query';
 
 const NoteItem = ({ value }: any) => {
@@ -10,6 +10,7 @@ const NoteItem = ({ value }: any) => {
     const [deltoogler, setDeltoogler] = useState(!(value.is_deleted));
 
     const mutation = useMutation(updateItem);
+    const mutationDelete = useMutation(deleteItem);
     const archivehandler = () => {
         const item = { is_archived: true }
         const id = value.id;
@@ -19,6 +20,19 @@ const NoteItem = ({ value }: any) => {
         const item = { is_archived: false }
         const id = value.id;
         mutation.mutate({ item, id });
+    }
+    const deleteHandler = () => {
+        const item = { is_deleted: true }
+        const id = value.id;
+        mutation.mutate({ item, id });
+    }
+
+    const onDelete = () => {
+        const id = value.id;
+        mutationDelete.mutate(id);
+    }
+    const onRestore = () => {
+
     }
     return (
         <>
@@ -39,9 +53,9 @@ const NoteItem = ({ value }: any) => {
                                     archivehandler();
                                 }} />) :
                                 (<ArchiveRestore size={18} onClick={() => { setArchtoogler(true); unarchivehandler(); }} />))}
-                        {(value.is_deleted) == false && (deltoogler ? (<Trash2 size={18} onClick={() => { setDeltoogler(false) }} />) : (<Trash onClick={() => { setDeltoogler(true) }} />))}
-                        {(value.is_deleted) == true && (<Button>Delete</Button>)}
-                        {(value.is_deleted) == true && (<Button>Restore</Button>)}
+                        {(value.is_deleted) == false && (deltoogler ? (<Trash2 size={18} onClick={() => { setDeltoogler(false); deleteHandler(); }} />) : (""))}
+                        {(value.is_deleted) == true && (<Button onClick={onDelete}>Delete</Button>)}
+                        {(value.is_deleted) == true && (<Button onClick={onRestore}>Restore</Button>)}
                     </div>
 
 
