@@ -1,4 +1,4 @@
-import React from 'react'
+
 import NoteCreate from '../components/ui/NoteCreate'
 import NoteItem from '../components/ui/NoteItem'
 import { useQuery } from 'react-query';

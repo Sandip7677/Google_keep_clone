@@ -1,5 +1,5 @@
 import { Link, Outlet } from "react-router-dom"
-import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, navigationMenuTriggerStyle } from "../components/ui/navigation-menu"
+import { NavigationMenu, NavigationMenuItem, NavigationMenuLink } from "../components/ui/navigation-menu"
 import Header from "../components/ui/header";
 import { Archive, Bell, Lightbulb, Trash2 } from "lucide-react";
 import { useState } from "react";

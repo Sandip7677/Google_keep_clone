@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { useQuery } from 'react-query';
 import { fetchNotesArchieved } from '../services/api';
 import NoteItem from '../components/ui/NoteItem';

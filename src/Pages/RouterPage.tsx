@@ -1,4 +1,4 @@
-import { Navigate, useRoutes } from "react-router-dom";
+import { useRoutes } from "react-router-dom";
 import RootLayout from "./RootLayout";
 import Notes from "./Notes";
 import Reminder from "./reminder";

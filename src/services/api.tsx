@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+
 import { supabase } from "../Auth/loginApi";
 
 export type nData = {

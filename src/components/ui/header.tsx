@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Menu } from 'lucide-react'
 import { Input } from './input'
 import { Search } from 'lucide-react'
@@ -13,14 +13,7 @@ const Header = () => {
     // const [show, setShow] = useState(true);
     const [user, setUser] = useState<User | null>();
     const { data } = useQuery('user', getUser);
-    // useEffect(() => {
-    //     // const getuser = async () => {
-    //     //     const userData = await getUser();
-    //     //     setUser(userData.data.user);
-    //     // }
-    //     // getuser();
-    //     // console.log(user);
-    // }, [])
+
     useEffect(() => {
         setUser(data);
     }, [data])

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+
 import NoteCreate from '../components/ui/NoteCreate'
 import { useQuery } from 'react-query'
 import { fetchNotes } from '../services/api'
