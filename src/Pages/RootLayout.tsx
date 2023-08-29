@@ -35,7 +35,7 @@ const RootLayout = () => {
 
                         <div className="flex flex-row">
                           {item.icon}
-                          <div className="p-2 ml-2 text-base">{item.label}</div>
+                          <div className="p-2 ml-2 text-base hidden sm:flex">{item.label}</div>
                         </div>
                       </NavigationMenuLink>
                     </Link>
