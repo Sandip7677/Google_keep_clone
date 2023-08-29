@@ -22,7 +22,7 @@ const Notes = () => {
             Your Notes will Appear here
           </div>
         ) : (
-          <div className="w-full flex flex-wrap gap-2 p-2 mt-5">
+          <div className="w-full flex flex-row justify-center flex-wrap gap-2 p-2 mt-5 ">
             {
               notesData.data?.map((item) => {
                 return (

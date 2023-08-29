@@ -1341,6 +1341,14 @@ li{
   .sm\:flex {
     display: flex;
   }
+
+  .sm\:flex-row {
+    flex-direction: row;
+  }
+
+  .sm\:flex-col {
+    flex-direction: column;
+  }
 }
 
 @media (min-width: 768px) {
