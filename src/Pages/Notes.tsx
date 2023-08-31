@@ -8,6 +8,7 @@ import NoteItem from '../components/ui/NoteItem';
 
 const Notes = () => {
 
+
   const notesData = useQuery("notes", fetchNotes);
   // console.log(notesData, "notesdata")
   return (

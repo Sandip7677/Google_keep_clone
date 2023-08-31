@@ -10,24 +10,44 @@ const NoteItem = ({ value }: any) => {
     const [archtoogler, setArchtoogler] = useState(!(value.is_archived));
     const [deltoogler, setDeltoogler] = useState(!(value.is_deleted));
 
-    const mutation = useMutation(updateItem);
+    const mutationArchieve = useMutation(updateItem, {
+        onSettled: () => {
+            queryClient.invalidateQueries('archievenotes');
+            queryClient.invalidateQueries('notes');
+        },
+    });
+    const mutation = useMutation(updateItem, {
+        onSettled: () => {
+            queryClient.invalidateQueries('deletednotes');
+            queryClient.invalidateQueries('notes');
+
+        },
+    });
+
     const mutationDelete = useMutation(deleteItem, {
         onSettled: () => {
             queryClient.invalidateQueries('deletednotes');
         },
     });
+
     const archivehandler = () => {
         const item = { is_archived: true }
         const id = value.id;
-        mutation.mutateAsync({ item, id });
+        mutationArchieve.mutateAsync({ item, id });
     }
     const unarchivehandler = () => {
         const item = { is_archived: false }
         const id = value.id;
-        mutation.mutateAsync({ item, id });
+        mutationArchieve.mutateAsync({ item, id });
     }
+
     const deleteHandler = () => {
         const item = { is_deleted: true }
+        const id = value.id;
+        mutation.mutateAsync({ item, id });
+    }
+    const onRestore = () => {
+        const item = { is_deleted: false }
         const id = value.id;
         mutation.mutateAsync({ item, id });
     }
@@ -36,16 +56,14 @@ const NoteItem = ({ value }: any) => {
         const id = value.id;
         mutationDelete.mutateAsync(id);
     }
-    const onRestore = () => {
-        const item = { is_deleted: false }
-        const id = value.id;
-        mutation.mutateAsync({ item, id });
-    }
+
+
     return (
         <>
             <Card className="min-width-card min-height-card hover:shadow-lg">
-                {mutationDelete.isLoading ? <div className="h-full w-full flex justify-center items-center text-xl font-bold">
-                    Deleting...
+                {mutationDelete.isLoading || mutation.isLoading || mutationArchieve.isLoading ? <div className="h-full w-full flex justify-center items-center text-xl font-bold">
+                    {mutationDelete.isLoading ? "Deleting..." : "Updating..."}
+
                 </div> : (
                     <>
                         <CardContent className='text-lg'>

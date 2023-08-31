@@ -70,6 +70,7 @@ export const fetchNotesArchieved = async () => {
     .select("*")
     .eq('user_id', userId?.id)
     .eq("is_archived", "true")
+    .eq("is_deleted", "false")
 
   return data
 };
@@ -96,8 +97,6 @@ export const updateItem = async ({ item, id }: any) => {
     .eq("id", id); //matching id of row to update
 
   if (error) console.log(error);
-
-
 };
 
 // delete a note
