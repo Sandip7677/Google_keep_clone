@@ -16,6 +16,7 @@ import { createNote, getUser } from "../../services/api"
 import { useMutation, useQuery } from "react-query"
 import type { nData } from "../../services/api"
 import { Check } from 'lucide-react'
+import { queryClient } from "../../main"
 
 const FormSchema = z.object({
     note: z.string().min(2, {
@@ -32,7 +33,11 @@ const NoteCreate = () => {
         },
     })
 
-    const mutation = useMutation(createNote);
+    const mutation = useMutation(createNote, {
+        onSettled: () => {
+            queryClient.invalidateQueries('notes');
+        },
+    });
 
     function onSubmit(data: z.infer<typeof FormSchema>) {
         const newNote: nData = {
