@@ -1,27 +1,37 @@
-# React + TypeScript + Vite
+# Keeper APP
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the Keeper APP Web Application! This is a web-based note-taking application built using React and TypeScript, allowing users to keep track of their notes using their Google account.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Features](#features)
+- [Demo](#demo)
+- [Installation](#installation)
+  
+## Features
 
-## Expanding the ESLint configuration
+- Create and manage notes.
+- Archive notes for future reference.
+- Edit existing notes.
+- Set reminders for important notes.
+- Delete notes you no longer need or restore deleted notes.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Demo
 
-- Configure the top-level `parserOptions` property like this:
+You can see a live demo of this application [here](https://cozy-crostata-9dd671.netlify.app/). 
+ 
+## Installation
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+To run this application locally, follow these steps:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Clone this repository to your local machine:
+
+   git clone https://github.com/Sandip7677/Google_keep_clone.git
+
+2. run these command:
+   
+   cd Google_keep_clone.
+   
+   npm i.
+   
+   npm run dev.  
