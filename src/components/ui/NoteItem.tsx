@@ -76,10 +76,10 @@ const NoteItem = ({ value }: any) => {
                             <div className="flex gap-x-5">
                                 {(value.is_deleted) == false &&
                                     (archtoogler ?
-                                        (<Archive size={18} onClick={() => {
+                                        (<div title='Archive'><Archive size={18} onClick={() => {
                                             setArchtoogler(false);
                                             archivehandler();
-                                        }} />) :
+                                        }} /></div>) :
                                         (<ArchiveRestore size={18} onClick={() => { setArchtoogler(true); unarchivehandler(); }} />))}
                                 {(value.is_deleted) == false && (deltoogler ? (<Trash2 size={18} onClick={() => { setDeltoogler(false); deleteHandler(); }} />) : (""))}
                                 {(value.is_deleted) == true && (<Button onClick={onDelete}>Delete</Button>)}
